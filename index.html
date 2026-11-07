@@ -3,398 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NWebTech Solutions - Professional .NET Services</title>
+    <meta name="description" content="NWebTech Solutions builds thoughtful software and provides practical technology consulting for growing businesses.">
+    <meta name="theme-color" content="#0b1020">
+    <title>NWebTech Solutions | Software that moves business forward</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 5%;
-            background: rgba(15, 12, 41, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-            nav .container {
-                max-width: 1200px;
-                margin: 0 auto;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-            .nav-links a {
-                color: #fff;
-                text-decoration: none;
-                font-weight: 500;
-                transition: all 0.3s ease;
-                position: relative;
-            }
-
-                .nav-links a:hover {
-                    color: #667eea;
-                }
-
-                .nav-links a::after {
-                    content: '';
-                    position: absolute;
-                    bottom: -5px;
-                    left: 0;
-                    width: 0;
-                    height: 2px;
-                    background: #667eea;
-                    transition: width 0.3s ease;
-                }
-
-                .nav-links a:hover::after {
-                    width: 100%;
-                }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 6rem 5% 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-            .hero::before {
-                content: '';
-                position: absolute;
-                width: 500px;
-                height: 500px;
-                background: radial-gradient(circle, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0) 70%);
-                border-radius: 50%;
-                top: -250px;
-                right: -250px;
-                animation: float 6s ease-in-out infinite;
-            }
-
-            .hero::after {
-                content: '';
-                position: absolute;
-                width: 400px;
-                height: 400px;
-                background: radial-gradient(circle, rgba(118, 75, 162, 0.3) 0%, rgba(102, 126, 234, 0) 70%);
-                border-radius: 50%;
-                bottom: -200px;
-                left: -200px;
-                animation: float 8s ease-in-out infinite;
-            }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideDown 0.8s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: #b8b8d4;
-            margin-bottom: 2rem;
-            animation: fadeIn 1s ease-out 0.3s both;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 3rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            animation: fadeIn 1s ease-out 0.6s both;
-        }
-
-            .cta-button:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
-            }
-
-        .services {
-            padding: 5rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #b8b8d4;
-            font-size: 1.2rem;
-            margin-bottom: 4rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-
-            .service-card:hover {
-                transform: translateY(-10px);
-                background: rgba(255, 255, 255, 0.08);
-                box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
-            }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .service-card p {
-            color: #b8b8d4;
-            line-height: 1.6;
-        }
-
-        .contact {
-            padding: 5rem 5%;
-            text-align: center;
-            background: rgba(15, 12, 41, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .contact p {
-            color: #b8b8d4;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        footer {
-            padding: 2rem 5%;
-            text-align: center;
-            background: rgba(15, 12, 41, 0.95);
-            color: #b8b8d4;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        :root { --ink:#e8eefc; --muted:#9eacc7; --background:#080c18; --surface:#10172a; --line:rgba(167,187,225,.16); --blue:#79a8ff; --cyan:#6de1d0; --max-width:1160px; }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { background:var(--background); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6; }
+        a { color:inherit; text-decoration:none; }
+        .container { margin:0 auto; max-width:var(--max-width); padding:0 28px; }
+        header { background:rgba(8,12,24,.78); border-bottom:1px solid var(--line); backdrop-filter:blur(18px); position:sticky; top:0; z-index:10; }
+        nav { align-items:center; display:flex; justify-content:space-between; min-height:76px; }
+        .brand { align-items:center; display:flex; font-size:1.05rem; font-weight:750; gap:11px; letter-spacing:-.02em; }
+        .brand-mark { background:linear-gradient(135deg,var(--blue),var(--cyan)); border-radius:9px; height:29px; width:29px; }
+        .nav-links { align-items:center; display:flex; gap:30px; list-style:none; }
+        .nav-links a { color:var(--muted); font-size:.92rem; transition:color .2s ease; }
+        .nav-links a:hover,.nav-links a:focus-visible { color:var(--ink); }
+        .nav-cta { border:1px solid var(--line); border-radius:99px; color:var(--ink)!important; padding:9px 17px; }
+        .hero { overflow:hidden; padding:128px 0 110px; position:relative; }
+        .hero::before { background:#193b75; border-radius:50%; content:""; filter:blur(110px); height:360px; opacity:.35; position:absolute; right:-80px; top:-150px; width:360px; }
+        .eyebrow { color:var(--cyan); font-size:.76rem; font-weight:750; letter-spacing:.16em; text-transform:uppercase; }
+        h1 { font-size:clamp(3.2rem,8vw,6.8rem); letter-spacing:-.075em; line-height:.96; margin:22px 0 28px; max-width:900px; }
+        .gradient { background:linear-gradient(110deg,var(--ink) 25%,var(--blue),var(--cyan)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+        .hero-copy { color:var(--muted); font-size:1.18rem; max-width:610px; }
+        .actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:37px; }
+        .button { border:1px solid transparent; border-radius:8px; display:inline-block; font-size:.95rem; font-weight:700; padding:13px 20px; transition:transform .2s ease,box-shadow .2s ease; }
+        .button:hover { box-shadow:0 10px 28px rgba(0,0,0,.25); transform:translateY(-2px); }
+        .button-primary { background:linear-gradient(105deg,var(--blue),var(--cyan)); color:#07101f; }
+        .button-secondary { border-color:var(--line); color:var(--ink); }
+        section { padding:96px 0; }
+        .section-heading { align-items:end; display:flex; justify-content:space-between; margin-bottom:42px; gap:25px; }
+        h2 { font-size:clamp(2rem,4vw,3.2rem); letter-spacing:-.05em; line-height:1.05; }
+        .section-heading p { color:var(--muted); max-width:420px; }
+        .services { border-top:1px solid var(--line); }
+        .service-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+        .service-card { background:linear-gradient(145deg,rgba(20,32,57,.9),rgba(13,19,35,.9)); border:1px solid var(--line); border-radius:14px; min-height:245px; padding:28px; transition:border-color .2s ease,transform .2s ease; }
+        .service-card:hover { border-color:rgba(121,168,255,.65); transform:translateY(-5px); }
+        .service-number { color:var(--cyan); font-size:.8rem; font-weight:750; letter-spacing:.12em; }
+        .service-card h3 { font-size:1.25rem; letter-spacing:-.02em; margin:35px 0 10px; }
+        .service-card p { color:var(--muted); font-size:.95rem; }
+        .approach { background:var(--surface); }
+        .approach-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+        .approach-intro { color:var(--muted); font-size:1.08rem; margin-top:22px; max-width:460px; }
+        .steps { border-top:1px solid var(--line); }
+        .step { border-bottom:1px solid var(--line); display:grid; gap:20px; grid-template-columns:55px 1fr; padding:22px 0; }
+        .step span { color:var(--cyan); font-weight:750; }
+        .step h3 { font-size:1.05rem; margin-bottom:4px; }
+        .step p { color:var(--muted); font-size:.92rem; }
+        .contact { padding:115px 0; text-align:center; }
+        .contact p { color:var(--muted); margin:18px auto 30px; max-width:510px; }
+        footer { border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; padding:26px 0; }
+        .footer-content { align-items:center; display:flex; justify-content:space-between; }
+        @media (max-width:760px) { .container{padding:0 20px;} .hero{padding:90px 0 80px;} .nav-links{gap:15px;} .nav-links li:not(:last-child){display:none;} .section-heading,.footer-content{align-items:flex-start;flex-direction:column;} section{padding:72px 0;} .service-grid,.approach-grid{grid-template-columns:1fr;gap:16px;} .approach-grid{gap:48px;} }
+        @media (prefers-reduced-motion:reduce) { *,html { scroll-behavior:auto!important; transition:none!important; } }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <div class="logo">NWebTech</div>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Professional .NET Solutions</h1>
-            <p>Transform your business with custom software, stunning websites, and expert digital guidance. From development to deployment, we've got you covered.</p>
-            <a href="#services" class="cta-button">Explore Services</a>
-        </div>
-    </section>
-
-    <section id="services" class="services">
-        <h2 class="section-title">Our Services</h2>
-        <p class="section-subtitle">Comprehensive digital solutions tailored to your needs</p>
-
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🌐</div>
-                <h3>Static Business Websites</h3>
-                <p>Clean, mobile-friendly websites to showcase your work and establish your professional online presence.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">⚙️</div>
-                <h3>Internal Software Tools</h3>
-                <p>Custom solutions for billing, attendance tracking, stock management and more to streamline your operations.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">💡</div>
-                <h3>Digital Strategy Suggestions</h3>
-                <p>Expert guidance on which tools to use and how to save time with smart digital solutions.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">📍</div>
-                <h3>Google Maps Listing Help</h3>
-                <p>Get your business listed online for free and increase your local visibility.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">📄</div>
-                <h3>ITR-1 Filing for Salaried</h3>
-                <p>Hassle-free tax filing assistance with document preparation and online filing support.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">💰</div>
-                <h3>Finance Planning Guidance</h3>
-                <p>Simple, practical advice to manage savings, investments, and reduce EMI stress.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🗄️</div>
-                <h3>Custom Database Design</h3>
-                <p>Efficient SQL Server databases tailored for your specific business needs and workflows.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">📧</div>
-                <h3>Email Marketing Integration</h3>
-                <p>Engage customers effectively with automated newsletters and targeted email campaigns.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🎓</div>
-                <h3>Training & Workshops</h3>
-                <p>Practical digital skills training for you and your team to maximize productivity.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="contact-content">
-            <h2>Let's Work Together</h2>
-            <p>Ready to transform your business with professional digital solutions? Get in touch today!</p>
-            <a href="mailto:e4.nitn.amonkar@outlook.com" class="cta-button">Get In Touch</a>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 NWebTech Solutions. All rights reserved.</p>
-    </footer>
+    <header><div class="container"><nav aria-label="Primary navigation"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>NWebTech Solutions</a><ul class="nav-links"><li><a href="#services">Services</a></li><li><a href="#approach">Approach</a></li><li><a class="nav-cta" href="#contact">Start a conversation</a></li></ul></nav></div></header>
+    <main id="top">
+        <section class="hero"><div class="container"><p class="eyebrow">Software development · Technology consulting</p><h1>Build better. <span class="gradient">Move faster.</span></h1><p class="hero-copy">NWebTech Solutions helps growing businesses turn complex ideas and manual processes into dependable, easy-to-use software.</p><div class="actions"><a class="button button-primary" href="#contact">Discuss your project <span aria-hidden="true">→</span></a><a class="button button-secondary" href="#services">Explore services</a></div></div></section>
+        <section class="services" id="services"><div class="container"><div class="section-heading"><h2>Focused expertise.<br><span class="gradient">Practical outcomes.</span></h2><p>Only the services that help your team build, improve, and confidently use modern software.</p></div><div class="service-grid">
+            <article class="service-card"><span class="service-number">01 / BUILD</span><h3>Custom software</h3><p>Purpose-built applications that fit your workflows, from the first screen to a reliable production release.</p></article>
+            <article class="service-card"><span class="service-number">02 / WEB</span><h3>Web applications</h3><p>Fast, responsive business websites and web apps that are clear for customers and simple for your team to manage.</p></article>
+            <article class="service-card"><span class="service-number">03 / AUTOMATE</span><h3>Workflow automation</h3><p>Remove repetitive work with connected tools, smart processes, and integrations designed around how you operate.</p></article>
+            <article class="service-card"><span class="service-number">04 / DATA</span><h3>Database solutions</h3><p>Well-structured SQL Server databases and data flows that keep information secure, accurate, and useful.</p></article>
+            <article class="service-card"><span class="service-number">05 / ADVISE</span><h3>Technology consulting</h3><p>Clear, independent guidance on architecture, digital tooling, and the next technical decision your business should make.</p></article>
+        </div></div></section>
+        <section class="approach" id="approach"><div class="container approach-grid"><div><p class="eyebrow">A better way to build</p><h2>Clarity at every step.</h2><p class="approach-intro">Good software starts with listening. We keep the process focused, transparent, and grounded in the result your business actually needs.</p></div><div class="steps"><div class="step"><span>01</span><div><h3>Understand</h3><p>We map the problem, users, and goals before choosing a solution.</p></div></div><div class="step"><span>02</span><div><h3>Build</h3><p>We deliver in focused iterations so you can see progress and give feedback early.</p></div></div><div class="step"><span>03</span><div><h3>Improve</h3><p>We launch thoughtfully and continue refining what creates the most value.</p></div></div></div></div></section>
+        <section class="contact" id="contact"><div class="container"><p class="eyebrow">Have a challenge in mind?</p><h2>Let’s make it work.</h2><p>Tell us what you are trying to improve. We’ll help you find the clearest path forward.</p><a class="button button-primary" href="mailto:e4.nitin.amonkar@outlook.com">Start a conversation →</a></div></section>
+    </main>
+    <footer><div class="container footer-content"><span>© 2025 NWebTech Solutions</span><span>Software development &amp; technology consulting</span></div></footer>
 </body>
 </html>
