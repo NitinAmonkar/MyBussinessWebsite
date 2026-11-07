@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NWebTech Solutions - Professional .NET Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(15, 12, 41, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+            nav .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+            .nav-links a {
+                color: #fff;
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                position: relative;
+            }
+
+                .nav-links a:hover {
+                    color: #667eea;
+                }
+
+                .nav-links a::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -5px;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background: #667eea;
+                    transition: width 0.3s ease;
+                }
+
+                .nav-links a:hover::after {
+                    width: 100%;
+                }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                width: 500px;
+                height: 500px;
+                background: radial-gradient(circle, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0) 70%);
+                border-radius: 50%;
+                top: -250px;
+                right: -250px;
+                animation: float 6s ease-in-out infinite;
+            }
+
+            .hero::after {
+                content: '';
+                position: absolute;
+                width: 400px;
+                height: 400px;
+                background: radial-gradient(circle, rgba(118, 75, 162, 0.3) 0%, rgba(102, 126, 234, 0) 70%);
+                border-radius: 50%;
+                bottom: -200px;
+                left: -200px;
+                animation: float 8s ease-in-out infinite;
+            }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b8b8d4;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+            }
+
+        .services {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #b8b8d4;
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+            .service-card:hover {
+                transform: translateY(-10px);
+                background: rgba(255, 255, 255, 0.08);
+                box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: #b8b8d4;
+            line-height: 1.6;
+        }
+
+        .contact {
+            padding: 5rem 5%;
+            text-align: center;
+            background: rgba(15, 12, 41, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact p {
+            color: #b8b8d4;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            padding: 2rem 5%;
+            text-align: center;
+            background: rgba(15, 12, 41, 0.95);
+            color: #b8b8d4;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">NWebTech</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Professional .NET Solutions</h1>
+            <p>Transform your business with custom software, stunning websites, and expert digital guidance. From development to deployment, we've got you covered.</p>
+            <a href="#services" class="cta-button">Explore Services</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Comprehensive digital solutions tailored to your needs</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>Static Business Websites</h3>
+                <p>Clean, mobile-friendly websites to showcase your work and establish your professional online presence.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Internal Software Tools</h3>
+                <p>Custom solutions for billing, attendance tracking, stock management and more to streamline your operations.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💡</div>
+                <h3>Digital Strategy Suggestions</h3>
+                <p>Expert guidance on which tools to use and how to save time with smart digital solutions.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📍</div>
+                <h3>Google Maps Listing Help</h3>
+                <p>Get your business listed online for free and increase your local visibility.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📄</div>
+                <h3>ITR-1 Filing for Salaried</h3>
+                <p>Hassle-free tax filing assistance with document preparation and online filing support.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>Finance Planning Guidance</h3>
+                <p>Simple, practical advice to manage savings, investments, and reduce EMI stress.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🗄️</div>
+                <h3>Custom Database Design</h3>
+                <p>Efficient SQL Server databases tailored for your specific business needs and workflows.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📧</div>
+                <h3>Email Marketing Integration</h3>
+                <p>Engage customers effectively with automated newsletters and targeted email campaigns.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎓</div>
+                <h3>Training & Workshops</h3>
+                <p>Practical digital skills training for you and your team to maximize productivity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2>Let's Work Together</h2>
+            <p>Ready to transform your business with professional digital solutions? Get in touch today!</p>
+            <a href="mailto:e4.nitn.amonkar@outlook.com" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 NWebTech Solutions. All rights reserved.</p>
+    </footer>
+</body>
+</html>
