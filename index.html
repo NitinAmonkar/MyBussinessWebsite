@@ -16,8 +16,7 @@
         header { background:rgba(8,12,24,.78); border-bottom:1px solid var(--line); backdrop-filter:blur(18px); position:sticky; top:0; z-index:10; }
         nav { align-items:center; display:flex; justify-content:space-between; min-height:76px; }
         .brand { align-items:center; display:flex; font-size:1.05rem; font-weight:750; gap:11px; letter-spacing:-.02em; }
-        .brand-mark { align-items:center; background:linear-gradient(135deg,var(--blue),var(--cyan)); border-radius:9px; color:#07101f; display:flex; height:29px; justify-content:center; width:29px; }
-        .brand-mark svg { height:18px; width:18px; }
+        .brand-logo { border-radius:9px; display:block; height:38px; object-fit:contain; width:38px; }
         .nav-links { align-items:center; display:flex; gap:30px; list-style:none; }
         .nav-links a { color:var(--muted); font-size:.92rem; transition:color .2s ease; }
         .nav-links a:hover,.nav-links a:focus-visible { color:var(--ink); }
@@ -56,14 +55,20 @@
         .contact p { color:var(--muted); margin:18px auto 30px; max-width:510px; }
         footer { border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; padding:26px 0; }
         .footer-content { align-items:center; display:flex; justify-content:space-between; }
-        @media (max-width:760px) { .container{padding:0 20px;} .hero{padding:90px 0 80px;} .nav-links{gap:15px;} .nav-links li:not(:last-child){display:none;} .section-heading,.footer-content{align-items:flex-start;flex-direction:column;} section{padding:72px 0;} .service-grid,.approach-grid{grid-template-columns:1fr;gap:16px;} .approach-grid{gap:48px;} }
+        .contact-links { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:12px; }
+        .contact-link { border:1px solid var(--line); border-radius:8px; color:var(--ink); font-size:.9rem; padding:11px 16px; }
+        .contact-link:hover,.contact-link:focus-visible { border-color:var(--cyan); }
+        .quick-contact { bottom:20px; display:flex; flex-direction:column; gap:10px; position:fixed; right:20px; z-index:9; }
+        .quick-contact a { align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:50%; box-shadow:0 8px 24px rgba(0,0,0,.3); display:flex; font-size:1.1rem; height:44px; justify-content:center; transition:transform .2s ease; width:44px; }
+        .quick-contact a:hover,.quick-contact a:focus-visible { transform:scale(1.08); }
+        @media (max-width:760px) { .container{padding:0 20px;} .hero{padding:90px 0 80px;} .nav-links{gap:15px;} .nav-links li:not(:last-child){display:none;} .section-heading,.footer-content{align-items:flex-start;flex-direction:column;} section{padding:72px 0;} .service-grid,.approach-grid{grid-template-columns:1fr;gap:16px;} .approach-grid{gap:48px;} .quick-contact{bottom:14px;right:14px;} }
         @media (prefers-reduced-motion:reduce) { *,html { scroll-behavior:auto!important; transition:none!important; } }
     </style>
 </head>
 <body>
-    <header><div class="container"><nav aria-label="Primary navigation"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 5L3 12L8 19M16 5L21 12L16 19M14 4L10 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"/></svg></span>NWebTech Solutions</a><ul class="nav-links"><li><a href="#services">Services</a></li><li><a href="#approach">Approach</a></li><li><a class="nav-cta" href="#contact">Start a conversation</a></li></ul></nav></div></header>
+    <header><div class="container"><nav aria-label="Primary navigation"><a class="brand" href="#top"><img class="brand-logo" src="Logo.png" alt="NWebTech Solutions logo">NWebTech Solutions</a><ul class="nav-links"><li><a href="#services">Services</a></li><li><a href="#approach">Approach</a></li><li><a class="nav-cta" href="#contact">Start a conversation</a></li></ul></nav></div></header>
     <main id="top">
-        <section class="hero"><div class="container"><p class="eyebrow">Software development · Technology consulting</p><h1>Build better. <span class="gradient">Move faster.</span></h1><p class="hero-copy">NWebTech Solutions helps growing businesses turn complex ideas and manual processes into dependable, easy-to-use software.</p><div class="actions"><a class="button button-primary" href="#contact">Discuss your project <span aria-hidden="true">→</span></a><a class="button button-secondary" href="#services">Explore services</a></div></div></section>
+        <section class="hero"><div class="container"><p class="eyebrow">Software development · Technology consulting</p><h1>Build better. <span class="gradient">Move faster.</span></h1><p class="hero-copy">NWebTech Solutions helps small and local businesses in Ulwe and Navi Mumbai turn complex ideas and manual processes into dependable, easy-to-use software.</p><div class="actions"><a class="button button-primary" href="#contact">Discuss your project <span aria-hidden="true">→</span></a><a class="button button-secondary" href="#services">Explore services</a></div></div></section>
         <section class="services" id="services"><div class="container"><div class="section-heading"><h2>Focused expertise.<br><span class="gradient">Practical outcomes.</span></h2><p>Only the services that help your team build, improve, and confidently use modern software.</p></div><div class="service-grid">
             <article class="service-card"><span class="service-number">01 / BUILD</span><h3>Custom software</h3><p>Purpose-built applications that fit your workflows, from the first screen to a reliable production release.</p></article>
             <article class="service-card"><span class="service-number">02 / WEB</span><h3>Web applications</h3><p>Fast, responsive business websites and web apps that are clear for customers and simple for your team to manage.</p></article>
@@ -72,8 +77,10 @@
             <article class="service-card"><span class="service-number">05 / ADVISE</span><h3>Technology consulting</h3><p>Clear, independent guidance on architecture, digital tooling, and the next technical decision your business should make.</p></article>
         </div></div></section>
         <section class="approach" id="approach"><div class="container approach-grid"><div><p class="eyebrow">A better way to build</p><h2>Clarity at every step.</h2><p class="approach-intro">Good software starts with listening. We keep the process focused, transparent, and grounded in the result your business actually needs.</p></div><div class="steps"><div class="step"><span>01</span><div><h3>Understand</h3><p>We map the problem, users, and goals before choosing a solution.</p></div></div><div class="step"><span>02</span><div><h3>Build</h3><p>We deliver in focused iterations so you can see progress and give feedback early.</p></div></div><div class="step"><span>03</span><div><h3>Improve</h3><p>We launch thoughtfully and continue refining what creates the most value.</p></div></div></div></div></section>
-        <section class="contact" id="contact"><div class="container"><p class="eyebrow">Have a challenge in mind?</p><h2>Let’s make it work.</h2><p>Tell us what you are trying to improve. We’ll help you find the clearest path forward.</p><a class="button button-primary" href="mailto:e4.nitin.amonkar@outlook.com">Start a conversation →</a></div></section>
+        <section class="contact" id="contact"><div class="container"><p class="eyebrow">Have a challenge in mind?</p><h2>Let’s make it work.</h2><p>Tell us what you are trying to improve. We’ll help you find the clearest path forward.</p><div class="contact-links"><a class="button button-primary" href="mailto:e4.nitin.amonkar@outlook.com">Email us →</a><a class="contact-link" href="https://wa.me/AmonkarNitin" target="_blank" rel="noopener">Chat on WhatsApp</a></div></div></section>
     </main>
-    <footer><div class="container footer-content"><span>© 2025 NWebTech Solutions</span><span>Software development &amp; technology consulting</span></div></footer>
+    <div class="quick-contact" aria-label="Quick contact"><a href="mailto:e4.nitin.amonkar@outlook.com" aria-label="Email NWebTech Solutions">✉</a><a href="https://wa.me/AmonkarNitin" target="_blank" rel="noopener" aria-label="Chat with NWebTech Solutions on WhatsApp">◉</a></div>
+    <footer><div class="container footer-content"><span>© <span id="current-year"></span> NWebTech Solutions</span><span>Software development &amp; technology consulting</span></div></footer>
+    <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
